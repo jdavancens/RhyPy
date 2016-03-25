@@ -25,6 +25,23 @@ class Rhythm:
     def __init__(self, event_list):
         self._event_list = [bool(x) for x in event_list]
 
+    def __len__(self):
+        r'''Gets the length of the rhythm.
+
+        .. container: example
+
+            **Example 1.** Gets legnth
+
+            ::
+
+                >>> rhythm = Rhythm([1,0,1])
+                >>> len(rhythm)
+                3
+
+        Returns integer
+        '''
+        return len(self._event_list)
+
     def __str__(self):
         r'''Gets string representation of rhythm in musicological TUBS format.
 
@@ -90,23 +107,6 @@ class Rhythm:
             interval = abs(c[0]-c[1])
             iv[interval - 1] += 1
         return iv
-
-    def length(self):
-        r'''Gets the length of the rhythm.
-
-        .. container: example
-
-            **Example 1.** Gets legnth
-
-            ::
-
-                >>> rhythm = Rhythm([1,0,1])
-                >>> rhythm.length
-                3
-
-        Returns integer
-        '''
-        return len(self._event_list)
 
     def onsets(self):
         r'''Gets the onset coordinates.
