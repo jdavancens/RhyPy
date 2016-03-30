@@ -86,6 +86,45 @@ class Rhythm:
         i = i % k
         return self._event_list[i]
 
+    def inter_onset_intervals(self):
+        r''' Gets the inter-onset intervals of the rhythm.
+
+        .. container:: example
+
+            **Example 1.** Inter-onset intervals:
+
+            ::
+                >>> rhythm = Rhythm([1,0,1,0,0])
+                >>> rhythm.inter_onset_intervals
+                [2,3]
+
+            **Example 2.** Inter-onset intervals when no downbeat:
+
+            ::
+                >>> rhythm = Rhythm([0,1,0,1,0])
+                >>> rhythm.inter_onset_intervals
+                [2,3]
+        '''
+        temp = Rhythm(self._event_list)
+        # rotate until starts with onset
+        while(temp[0] is 0): #TODO: account for empty rhythm -> infinite loop
+            temp.rotate(1)
+        intervals = []
+        count = 0
+        last = 0
+        for i in temp._event_list:
+            if i == 1:
+                if count > 0:
+                    intervals.append(count)
+                count = 1
+            else:
+                count += 1
+        if count > 0:
+            intervals.append(count)
+        return intervals
+
+
+
     def interval_vector(self):
         r'''Gets the interval vector of the onset coordinates (the 'spectrum'
         of the rhythm)
