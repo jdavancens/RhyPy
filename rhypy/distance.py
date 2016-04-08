@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from rhypy import Rhythm
 import math
 
