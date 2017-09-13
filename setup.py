@@ -1,8 +1,9 @@
 # -*- coding utf-8
 
-#!/usr/bin/env python
+# !/usr/bin/env python
 
 from distutils.core import setup
+
 
 def main():
     setup(
@@ -13,7 +14,7 @@ def main():
         url='https://github.com/jdavancens/rhypy',
         version='0.1',
         zip_safe=False,
-        )
+    )
 
 
 if __name__ == '__main__':
